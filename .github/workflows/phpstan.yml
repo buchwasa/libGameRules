@@ -28,4 +28,4 @@ jobs:
       - name: Install PocketMine Dependencies
         run: ./bin/php7/bin/php composer.phar install --prefer-dist --no-interaction --working-dir=pocketmine
       - name: Run PHPStan
-        run: phpstan analyze --no-progress
+        run: ./pocketmine/vendor/bin/phpstan analyze --no-progress
