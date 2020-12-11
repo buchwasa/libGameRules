@@ -7,11 +7,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Setup PHP
-        uses: shivammathur/setup-php@2.9.0
+      - name: Build PHP
+        uses: wei/wget@v1
         with:
-          php-version: '7.4'
-          tools: phpstan, composer:v2
+          args: https://github.com/pmmp/php-build-scripts/raw/stable/compile.sh
+      - run: chmod +x compile.sh
+      - run: ./compile.sh
       - name: Clone PocketMine
         uses: actions/checkout@v2
         with: 
