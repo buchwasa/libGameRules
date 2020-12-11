@@ -11,7 +11,6 @@ jobs:
         uses: wei/wget@v1
         with:
           args: https://github.com/pmmp/php-build-scripts/raw/stable/compile.sh
-      - run: chmod +x compile.sh
       - run: ./compile.sh
       - name: Clone PocketMine
         uses: actions/checkout@v2
