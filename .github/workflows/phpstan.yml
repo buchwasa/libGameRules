@@ -20,9 +20,7 @@ jobs:
           ref: 'master'
           submodules: true
       - run: ls
-      - run: cd pocketmine
       - name: Install PocketMine Dependencies
-        run: composer install --prefer-dist --no-interaction
-      - run: cd ..
+        run: composer install --prefer-dist --no-interaction --working-dir=pocketmine
       - name: Run PHPStan
         run: phpstan analyze --no-progress
