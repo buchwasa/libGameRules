@@ -20,8 +20,12 @@ jobs:
           path: 'pocketmine'
           ref: 'master'
           submodules: true
+      - name: Get Composer
+        uses: wei/wget@v1
+        with:
+          args: https://getcomposer.org/composer-stable.phar -O composer.phar
       - run: ls
       - name: Install PocketMine Dependencies
-        run: composer install --prefer-dist --no-interaction --working-dir=pocketmine
+        run: ./bin/php7/bin/php composer.phar install --prefer-dist --no-interaction --working-dir=pocketmine
       - name: Run PHPStan
         run: phpstan analyze --no-progress
