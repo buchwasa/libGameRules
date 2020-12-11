@@ -7,6 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: nxtlvlsoftware/pmmp-phpstan-action@4
+      - name: Setup PHP
+        uses: shivammathur/setup-php@2.9.0
         with:
-          phpstan-config: phpstan.neon.dist
+          php-version: '7.4'
+          tools: phpstan
+      - name: Clone PocketMine
+        uses: actions/checkout@v2
+        with: 
+          repository: 'https://github.com/pmmp/PocketMine-MP'
+          path: 'pocketmine'
+          ref: 'master'
+          submodules: true
+      - run: cd pocketmine
+      - name: Install PocketMine Dependencies
+        run: composer install --prefer-dist --no-interaction
+      - run: cd ..
+      - name: Run PHPStan
+        run: phpstan analyze --no-progress
