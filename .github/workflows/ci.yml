@@ -1,4 +1,4 @@
-name: PHPStan
+name: CI
 
 on: [push, pull_request]      
 
@@ -24,7 +24,6 @@ jobs:
         uses: wei/wget@v1
         with:
           args: https://getcomposer.org/composer-stable.phar -O composer.phar
-      - run: ls
       - name: Install PocketMine Dependencies
         run: ./bin/php7/bin/php composer.phar install --prefer-dist --no-interaction --working-dir=pocketmine
       - name: Run PHPStan
