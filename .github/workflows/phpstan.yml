@@ -13,7 +13,7 @@ jobs:
           args: -o php.zip '"https://dev.azure.com/pocketmine/a29511ba-1771-4ad2-a606-23c00a4b8b92/_apis/build/builds/348/artifacts?artifactName=Linux&api-version=6.0&%24format=zip"'
       - run: unzip php.zip
       - run: tar -xzvf Linux/PHP_Linux-x86_64.tar.gz 
-      - run: mb Linux/bin .
+      - run: mv Linux/bin .
       - name: Clone PocketMine
         uses: actions/checkout@v2
         with:
