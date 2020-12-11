@@ -19,6 +19,7 @@ jobs:
           path: 'pocketmine'
           ref: 'master'
           submodules: true
+      - run: ls
       - run: cd pocketmine
       - name: Install PocketMine Dependencies
         run: composer install --prefer-dist --no-interaction
